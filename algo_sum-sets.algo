@@ -1,0 +1,149 @@
+// Solution 1
+ALGORITHM sulution1
+
+VAR
+
+    set1,set2 : ARRAY_OF INTEGER[];
+    i,j,sum,t1,t2: INTEGER;
+    test: BOOLEAN;
+    
+BEGIN
+
+   sum:=0;
+   i:=0;
+   j:=0;
+   k:=1;
+
+
+  //Taille du Tableau 1
+  write("Put The size of the first table")
+  read (t1);
+
+   //elements of table 1
+  FOR i FROM 0 to t1-1 STEP STEP DO
+   Write("give the elements of set 1");
+   Read(set1[i]);
+   END_FOR
+
+   //Taille du Tableau 2
+  write("Put The size of the seconde table")
+  read (t2);
+   
+   //elements of table 2
+   FOR i FROM 0 to t2-1 STEP STEP DO
+   Write("give the elements of set 2");
+   Read(set2[j]);
+   END_FOR
+
+
+
+  FOR i FROM 0 TO t1-1 STEP 1  DO
+  
+      FOR j FROM 0 TO t2-1 STEP 1  DO
+               
+        IF (set1[i] <> set2[j]) && (j==t2-1)  THEN
+           
+            sum:= sum + set1[i];
+            else
+            break;
+
+        END_IF
+
+      END_FOR
+
+  END_FOR
+
+
+  FOR j FROM 0 TO t2-1 STEP 1  DO
+        
+      FOR i FROM 0 TO t1-1 STEP 1  DO
+        
+       
+        IF (set1[i] <> set2[j]) && (j==t2-1)  THEN
+           
+            sum:= sum + set2[j];
+            else
+            break;
+        END_IF
+
+      END_FOR
+  END_FOR    
+
+ write("the sum of all distinct elements is: " + sum);
+
+END
+
+//solution 2
+ALGORITHM solution 2
+VAR
+    ht1 : HASH_TABLE<INTEGER,INTEGER>;
+    ht2 : HASH_TABLE<INTEGER,INTEGER>;
+    i,j,nh1,nh2,z,w,sum : INTEGER;
+   
+BEGIN
+    // SIZES OF HASH-TABLES
+    REPEAT
+         write("Put the size of the first table");
+        read(nh1);
+        write("Put the size of the seconde table");
+        read(nh2);
+
+    UNTIL ((nh1 : INTEGER)&&(nh2 : INTEGER))
+
+    FOR i FROM 0 TO nh1-1 STEP step  DO
+        write("Put an element in the first table");
+        read(x1);
+        ht1.insert(i,x1);
+    END_FOR
+
+    FOR j FROM 0 TO nh2-1 STEP step  DO
+        write("Put an element in the seconde table");
+        read(x2);
+        ht1.insert(j,x2);
+    END_FOR
+
+    // the Test
+    FOR i FROM 0 TO nh1-1 STEP step  DO
+        FOR j FROM 0 TO nh2-1 STEP step  DO
+
+            z:= ht1.get(i);
+            w:= ht2.get(j);
+
+        IF (z <> w) && (j==nh2-1)  THEN
+           
+            sum:= sum + z;
+            else
+            break;
+
+        END_IF
+         
+        END_FOR
+
+    END_FOR
+
+
+
+
+
+    FOR j FROM 0 TO nh2-1 STEP step  DO
+        FOR i FROM 0 TO nh1-1 STEP step  DO
+
+            z:= ht1.get(i);
+            w:= ht2.get(j);
+
+        IF (z <> w) && (i==nh1-1)  THEN
+           
+            sum:= sum + W;
+            else
+            break;
+
+        END_IF
+         
+        END_FOR
+
+    END_FOR
+
+
+ write("the sum of all distinct elements is: " + sum);
+
+END
